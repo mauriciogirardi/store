@@ -1,32 +1,32 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
+import type { Metadata } from 'next'
+import { Inter } from 'next/font/google'
+import './globals.css'
 
 const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-});
+  variable: '--font-inter',
+  subsets: ['latin'],
+})
 
 export const metadata: Metadata = {
   title: {
-    default: "Store",
+    default: 'Store',
     template: `%s | Store`,
   },
   robots: {
     follow: true,
     index: true,
   },
-  description: "Mini-loja de comparação de preços",
-};
+  description: 'Mini-loja de comparação de preços',
+}
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
   return (
     <html lang="pt" className={`${inter.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="bg-zinc-100">{children}</body>
     </html>
-  );
+  )
 }
