@@ -1,13 +1,17 @@
 import type { Metadata } from 'next'
+import { env } from '@/env'
 import { StoreFeature } from '@/features/store/store'
 import { getProducts } from '@/http/get-products'
 
+export const dynamic = 'force-dynamic'
+
 export const metadata: Metadata = {
-  title: 'Loja - Produtos em Destaque',
-  description: 'Explore nossa coleção de produtos com os melhores preços do mercado. Centenas de itens disponíveis em diferentes categorias.',
+  title: 'Products',
+  description:
+    'Explore our product collection with the best prices on the market. Hundreds of items available across different categories.',
   openGraph: {
-    title: 'Loja - Produtos em Destaque',
-    description: 'Explore nossa coleção de produtos com os melhores preços do mercado.',
+    title: 'Products',
+    description: 'Explore our product collection with the best prices on the market.',
     type: 'website',
   },
 }
@@ -18,9 +22,9 @@ export default async function HomePage() {
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
-    name: 'Store - Comparação de Preços',
-    description: 'Mini-loja com comparação de preços. Encontre os melhores produtos com os melhores preços.',
-    url: process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000',
+    name: 'Store - Price Comparison',
+    description: 'Mini-store with price comparison. Find the best products at the best prices.',
+    url: env.NEXT_PUBLIC_BASE_URL,
     mainEntity: {
       '@type': 'ItemList',
       itemListElement: products.slice(0, 12).map((product, index) => ({
@@ -32,7 +36,7 @@ export default async function HomePage() {
         offers: {
           '@type': 'Offer',
           price: product.price.toString(),
-          priceCurrency: 'BRL',
+          priceCurrency: 'EUR',
         },
         aggregateRating: {
           '@type': 'AggregateRating',
@@ -47,6 +51,7 @@ export default async function HomePage() {
     <>
       <script
         type="application/ld+json"
+        // biome-ignore lint/security/noDangerouslySetInnerHtml: safe — JSON.stringify escapes special chars and data comes from a trusted API
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <StoreFeature products={products} />
