@@ -10,12 +10,9 @@ export class APIError extends Error {
   }
 }
 
-const MAX_RETRIES = 3
-const RETRY_DELAY = 1000
-
 export async function fetchWithRetry<T>(
   fetcher: () => Promise<T>,
-  maxRetries = MAX_RETRIES,
+  maxRetries = env.NEXT_PUBLIC_MAX_RETRIES,
 ): Promise<T> {
   let lastError: Error | null = null
 
@@ -25,7 +22,7 @@ export async function fetchWithRetry<T>(
     } catch (error) {
       lastError = error instanceof Error ? error : new Error('Unknown error')
       if (i < maxRetries - 1) {
-        await new Promise((resolve) => setTimeout(resolve, RETRY_DELAY * (i + 1)))
+        await new Promise((resolve) => setTimeout(resolve, env.NEXT_PUBLIC_RETRY_DELAY * (i + 1)))
       }
     }
   }
