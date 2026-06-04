@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
+import { env } from '@/env'
 
 const inter = Inter({
   variable: '--font-inter',
@@ -16,7 +17,18 @@ export const metadata: Metadata = {
     follow: true,
     index: true,
   },
-  description: 'Mini-loja de comparação de preços',
+  description: 'Mini-loja. Encontre os melhores produtos com os melhores preços.',
+  openGraph: {
+    type: 'website',
+    locale: 'pt_PT',
+    url: env.NEXT_PUBLIC_BASE_URL,
+    title: 'Store ',
+    description: 'Mini-loja. Encontre os melhores produtos com os melhores preços.',
+    siteName: 'Store',
+  },
+  alternates: {
+    canonical: env.NEXT_PUBLIC_BASE_URL,
+  },
 }
 
 export default function RootLayout({
