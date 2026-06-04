@@ -3,8 +3,6 @@ import { env } from '@/env'
 import { StoreFeature } from '@/features/store/store'
 import { getProducts } from '@/http/get-products'
 
-export const dynamic = 'force-dynamic'
-
 export const metadata: Metadata = {
   title: 'Products',
   description:
