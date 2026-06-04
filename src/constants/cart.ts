@@ -1,0 +1,1 @@
+export const MAXIMUM_QUANTITY_ALLOWED_BY_ITEM = 12
