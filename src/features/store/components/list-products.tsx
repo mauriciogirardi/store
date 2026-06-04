@@ -1,11 +1,11 @@
-import { ShoppingCartIcon } from 'lucide-react'
 import Image from 'next/image'
+import { Card } from '@/components/card'
+import { Rating } from '@/components/rating'
+import { Tag } from '@/components/tag'
 import type { TProduct } from '@/http/get-products'
 import { cn } from '@/utils/cn'
 import { formatMoney } from '@/utils/format-money'
-import { Button } from './button'
-import { Rating } from './rating'
-import { Tag } from './tag'
+import { AddCartButton } from './add-cart-button'
 
 interface ListProductProps extends React.ComponentProps<'ul'> {
   products: TProduct[]
@@ -23,7 +23,7 @@ export function ListProduct({ products, className, ...props }: ListProductProps)
     >
       {products?.map((product) => (
         <li key={product.id}>
-          <article className="bg-white group rounded-2xl shadow-md px-4 py-6 flex flex-col justify-between h-full">
+          <Card className="flex flex-col justify-between h-full">
             <div>
               <div className="flex items-end justify-end mb-10">
                 <Tag category={product.category} />
@@ -33,10 +33,11 @@ export function ListProduct({ products, className, ...props }: ListProductProps)
                 <Image
                   src={product.image}
                   alt={product.title}
-                  width={120}
-                  height={120}
+                  width={0}
+                  height={0}
+                  sizes="150px"
                   loading="eager"
-                  className="group-hover:scale-105 transition-transform duration-500 w-auto h-auto"
+                  className="group-hover:scale-105 transition-transform duration-500 w-37.5 h-auto"
                 />
               </div>
             </div>
@@ -47,12 +48,9 @@ export function ListProduct({ products, className, ...props }: ListProductProps)
                 <h2 className="text-center font-semibold">{product.title}</h2>
                 <p className="font-bold text-2xl">{formatMoney(product.price)}</p>
               </div>
-              <Button aria-label={`Add ${product.title} to cart`}>
-                <ShoppingCartIcon className="size-5" aria-hidden="true" />
-                Add to Cart
-              </Button>
+              <AddCartButton product={product} />
             </div>
-          </article>
+          </Card>
         </li>
       ))}
     </ul>
