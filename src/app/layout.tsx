@@ -17,13 +17,13 @@ export const metadata: Metadata = {
     follow: true,
     index: true,
   },
-  description: 'Mini-loja. Encontre os melhores produtos com os melhores preços.',
+  description: 'Mini store. Find the best products at the best prices.',
   openGraph: {
     type: 'website',
-    locale: 'pt_PT',
+    locale: 'en_US',
     url: env.NEXT_PUBLIC_BASE_URL,
     title: 'Store ',
-    description: 'Mini-loja. Encontre os melhores produtos com os melhores preços.',
+    description: 'Mini store. Find the best products at the best prices.',
     siteName: 'Store',
   },
   alternates: {
@@ -37,7 +37,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="pt" className={`${inter.variable} h-full antialiased`}>
+    <html lang="en" className={`${inter.variable} h-full antialiased`}>
       <body className="bg-zinc-100">{children}</body>
     </html>
   )

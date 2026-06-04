@@ -36,7 +36,7 @@ export function CartSummary({ quantity, total, hasMaxQuantityError }: CartSummar
 
       {hasMaxQuantityError && (
         <div className="flex items-start gap-2 p-3 rounded-sm bg-red-50 border border-red-200 mt-4">
-          <AlertCircle className="size-5 text-red-600 flex-shrink-0 mt-0.5" aria-hidden />
+          <AlertCircle className="size-5 text-red-600 shrink-0 mt-0.5" aria-hidden />
           <div>
             <p className="text-sm font-medium text-red-800">
               Some items have reached the maximum quantity ({MAXIMUM_QUANTITY_ALLOWED_BY_ITEM})

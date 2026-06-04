@@ -2,8 +2,8 @@ import type { Metadata } from 'next'
 import { CartFeature } from '@/features/cart/cart'
 
 export const metadata: Metadata = {
-  title: 'Carrinho de Compras',
-  description: 'Visualize e gerencie os itens no seu carrinho de compras.',
+  title: 'Shopping Cart',
+  description: 'View and manage the items in your shopping cart.',
   robots: {
     index: false,
   },
